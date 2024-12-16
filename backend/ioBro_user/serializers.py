@@ -2,6 +2,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import ValidationError
 from user.models import User
+from vdf.models import VDF
 from django.contrib.auth.hashers import check_password
 
 
@@ -23,5 +24,14 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-        token['username'] = user.username
+        # VDF 정보 추가
+        try:
+            vdf = VDF.objects.get(user=user)
+            token['vdf'] = {
+                "username" : user.username,
+                "vdf": vdf.vdf,
+            }
+        except VDF.DoesNotExist:
+            token['vdf'] = None
+
         return token

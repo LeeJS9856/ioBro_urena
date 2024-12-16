@@ -19,10 +19,16 @@ from django.urls import path, include
 from rest_framework_simplejwt.views import TokenRefreshView, TokenBlacklistView, TokenObtainPairView
 from .serializers import CustomTokenObtainPairSerializer
 
-
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer
+    
 urlpatterns = [
     path('admin', admin.site.urls),
-    path("api/user", include("user.urls")),
-    path("api/vdf", include("vdf.urls")),
-    path("api/chat", include("chat.urls")),
+    path("api/user/", include("user.urls")),
+    path("api/vdf/", include("vdf.urls")),
+    path("api/chat/", include("chat.urls")),
+]+ [
+    path("api/login/", CustomTokenObtainPairView.as_view()),
+    path("api/logout/", TokenBlacklistView.as_view()),
+    path("api/token/refresh/", TokenRefreshView.as_view()),
 ]

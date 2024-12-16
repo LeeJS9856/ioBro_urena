@@ -4,7 +4,7 @@ from .models import VDF, VDFSurvey, VDFSurveyAnswer, VDFSurveyQuestion
 class VDFSerializer(serializers.ModelSerializer):
     class Meta:
         model = VDF
-        fields = '__all__'
+        fields = ("vdf",)
 
 class VDFSurveySerializer(serializers.ModelSerializer):
     class Meta:
