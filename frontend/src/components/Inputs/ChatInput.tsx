@@ -4,18 +4,20 @@ import Icon from 'react-native-vector-icons/Feather';
 
 interface ChatInputProps {
   value: string;
-//   onChangeText: (text: string) => void;
+  onChangeText: (text: string) => void;
+  onPress: ()=>void;
 }
 
-const ChatInput: React.FC<ChatInputProps> = ({ value }) => {
+const ChatInput: React.FC<ChatInputProps> = ({ value, onChangeText, onPress }) => {
   return (
     <View style={styles.inputContainer}>
         <TextInput
             style={styles.input}
             placeholder='Message'
             value={value}
+            onChangeText={onChangeText}
         />
-        <TouchableOpacity style={styles.sendButton}>
+        <TouchableOpacity style={styles.sendButton} onPress={onPress}>
             <Icon name='arrow-up' size={20} style={styles.sendIcon}/>
         </TouchableOpacity>
     </View>
