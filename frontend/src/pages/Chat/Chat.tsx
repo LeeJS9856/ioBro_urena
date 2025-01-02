@@ -6,9 +6,14 @@ import AnswerBalloon from '../../components/Balloons/AnswerBalloon';
 import ChatInput from '../../components/Inputs/ChatInput';
 import Styles from '../../styles/Styles';
 
+interface QnA {
+  Q?: string;
+  A?: string;
+}
+
 const Chat: React.FC = () => {
   const [question, setQuestion] = useState('');
-  const [sampleQnA, setSampleQnA] = useState([{Q: '질문입니다.'}, {A: '답변입니다.'}]);
+  const [sampleQnA, setSampleQnA] = useState([{}]);
   const handleQuestion = () => {
     setSampleQnA(prevQnA => [...prevQnA, {Q: question}]);
     setSampleQnA(prevQnA => [...prevQnA, {A: '답변입니다.'}]);
@@ -21,7 +26,7 @@ const Chat: React.FC = () => {
       <TopNavigation styleType={2}/>
       <ScrollView>
         <View style={Styles.startContainer}>
-          {sampleQnA.map((item, index)=> {
+          {sampleQnA.map((item: QnA, index)=> {
             if(item.Q) {
               return <QuestionBalloon key={index} text={item.Q}/>;
             }
