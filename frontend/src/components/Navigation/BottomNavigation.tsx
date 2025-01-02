@@ -1,11 +1,30 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
 const BottomNavigation: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const navigation = useNavigation();
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const state = navigation.getState();
+      if (state && state.routes[state.index]) {
+        const currentRoute = state.routes[state.index].name;
+        switch (currentRoute) {
+          case 'Main':
+            setActiveIndex(0);
+            break;
+          case 'Chat':
+            setActiveIndex(2);
+            break;
+          default:
+            break;
+        }
+      }
+    }, [navigation])
+  );
 
   const handleIconPress = (index: number) => {
     setActiveIndex(index);
