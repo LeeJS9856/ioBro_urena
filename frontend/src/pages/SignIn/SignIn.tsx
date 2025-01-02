@@ -21,7 +21,7 @@ const SignIn: React.FC = () => {
 
   return (
     <SafeAreaView style={Styles.background}>
-      <View style={Styles.container}>
+      <View style={Styles.centerContainer}>
         <View style={SignInStyles.logo}>
           <Logo size={24}/>
         </View>

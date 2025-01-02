@@ -8,7 +8,7 @@ const Main: React.FC = () => {
   return (
     <SafeAreaView style={Styles.background}>
       <TopNavigation styleType={1}/>
-      <View style={Styles.container}>
+      <View style={Styles.startContainer}>
         <Text>메인 화면</Text>
       </View>
       <BottomNavigation/>

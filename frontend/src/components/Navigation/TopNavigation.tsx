@@ -27,7 +27,7 @@ const TopNavigation: React.FC<TopNavigationProps> = ({ onBackPress, styleType })
                 <Icon name='arrow-back' size={24}/>
               </TouchableOpacity>
               <View style={styles.centerContainer}>
-                <Logo size={20} />
+                <Logo size={16} />
                 <Text style={styles.chatRoomName}>채팅방 이름</Text>
               </View>
               <View style={styles.iconContainer}>
@@ -59,8 +59,8 @@ const styles = StyleSheet.create({
     left: 18,
   },
   iconContainer: {
-    position: 'absolute', // 오른쪽에 고정
-    right: 18, // 오른쪽 여백
+    position: 'absolute',
+    right: 18,
     flexDirection: 'row',
   },
   icon: {
@@ -68,12 +68,13 @@ const styles = StyleSheet.create({
     color: '#464A4D',
   },
   centerContainer: {
-    alignItems: 'center', // 수평 중앙 정렬
-    width: '100%', // 전체 너비를 차지하도록 설정
+    alignItems: 'center',
+    width: '100%',
   },
   chatRoomName: {
-    fontSize: 10,
+    fontSize: 11,
     color: '#464A4D',
+    fontWeight: 'bold',
   },
 });
 
