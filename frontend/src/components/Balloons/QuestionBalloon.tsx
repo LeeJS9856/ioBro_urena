@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        marginBottom: 8,
+        marginBottom: 5,
     },
     QuestionBallon: {
         maxWidth: '70%',
