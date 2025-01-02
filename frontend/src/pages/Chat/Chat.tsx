@@ -3,9 +3,13 @@ import { SafeAreaView, View, ScrollView } from 'react-native';
 import TopNavigation from '../../components/Navigation/TopNavigation';
 import QuestionBalloon from '../../components/Balloons/QuestionBalloon';
 import AnswerBalloon from '../../components/Balloons/AnswerBalloon';
+import ChatInput from '../../components/Inputs/ChatInput';
 import Styles from '../../styles/Styles';
 
 const Chat: React.FC = () => {
+// const [question, setQuestion] = useState('');
+const question = '';
+
   return (
     <SafeAreaView style={Styles.background}>
       <TopNavigation styleType={2}/>
@@ -19,6 +23,7 @@ const Chat: React.FC = () => {
           <QuestionBalloon text={"동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세"}/>
         </View>
       </ScrollView>
+      <ChatInput value={question}/>
     </SafeAreaView>
   );
 };

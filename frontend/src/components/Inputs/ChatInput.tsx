@@ -1,46 +1,69 @@
 import React from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 
 interface ChatInputProps {
-  placeholder: string;
   value: string;
-  isPassword?: boolean;
-  onChangeText: (text: string) => void;
+//   onChangeText: (text: string) => void;
 }
 
-const ChatInput: React.FC<ChatInputProps> = ({ placeholder, value, onChangeText, isPassword = false }) => {
+const ChatInput: React.FC<ChatInputProps> = ({ value }) => {
   return (
     <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.input}
-        placeholder={placeholder}
-        placeholderTextColor="#464A4D"
-        value={value}
-        onChangeText={onChangeText}
-        secureTextEntry={isPassword}
-        textAlign = "center"
-      />
+        <TextInput
+            style={styles.input}
+            placeholder='Message'
+            value={value}
+        />
+        <TouchableOpacity style={styles.sendButton}>
+            <Icon name='arrow-up' size={20} style={styles.sendIcon}/>
+        </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   inputContainer: {
-    marginBottom: 16,
     width: '100%',
-    maxWidth: 300,
+    flexDirection: 'row',
+    height: 70,
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
   },
   input: {
-    height: 43,
-    borderRadius: 16,
+    flex: 1,
+    height: 40,
+    borderRadius: 20,
     backgroundColor: '#E7EEF1',
     fontFamily: 'NotoSansKR-Light',
     fontWeight: '400',
     fontSize: 14,
     paddingVertical: 0,
     paddingHorizontal: 10,
-    lineHeight: 19.6,
+    lineHeight: 20,
+    marginRight: 10,
     color: '#000000',
+  },
+  sendButton: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: '#714DF5',
+    color: '#ffffff',
+    overflow: 'hidden',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  sendIcon: {
+    color: '#ffffff',
+    fontWeight: '900',
   },
 });
 
