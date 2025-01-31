@@ -6,6 +6,7 @@ import QuestionBalloon from '../../components/Balloons/QuestionBalloon';
 import AnswerBalloon from '../../components/Balloons/AnswerBalloon';
 import ChatInput from '../../components/Inputs/ChatInput';
 import Styles from '../../styles/Styles';
+import apiClient from '../../services/apiClient';
 
 interface QnA {
   Q?: string;
@@ -17,11 +18,18 @@ const Chat: React.FC = () => {
   const [sampleQnA, setSampleQnA] = useState([{}]);
   const navigation = useNavigation();
 
-  const handleQuestion = () => {
-    setSampleQnA(prevQnA => [...prevQnA, {Q: question}]);
-    setSampleQnA(prevQnA => [...prevQnA, {A: '답변입니다.'}]);
-    setQuestion('');
-  };
+  const handleQuestion = async () => {
+    console.log(question);
+    const response = await apiClient.post('/api/chat/', {
+      vdf: 'v2',
+      question : question,
+    });
+    console.log(response.data);
+    const { answer } = response.data;
+      setSampleQnA(prevQnA => [...prevQnA, {Q: question}]);
+      setSampleQnA(prevQnA => [...prevQnA, {A: answer}]);
+      setQuestion('');
+    };
 
   const handleGoBack = () => {
     if (navigation.canGoBack()) {

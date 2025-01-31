@@ -149,3 +149,5 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
 }
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '10.0.2.2']
