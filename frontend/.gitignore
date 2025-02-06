@@ -72,3 +72,7 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+android/gradle.properties
+android/app/src/main/res/xml/network_security_config.xml
+src/config.ts
