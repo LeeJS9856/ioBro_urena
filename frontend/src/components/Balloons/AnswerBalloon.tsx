@@ -1,19 +1,28 @@
 import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 import { TextGmarketSans } from '../../utils/CustomText';
+import { ActivityIndicator } from 'react-native-paper';
 
 interface AnswerBalloonProps {
   text: string;
+  loading: boolean;
 }
 
-const AnswerBalloon: React.FC<AnswerBalloonProps> = ({ text }) => {
+const AnswerBalloon: React.FC<AnswerBalloonProps> = ({ text, loading }) => {
   return (
     <View style={styles.AnswerContainer}>
         <View style={styles.Icon}>
             <TextGmarketSans style={styles.IconText}>U</TextGmarketSans>
         </View>
         <View style={styles.AnswerBallon}>
-            <Text style={styles.AnswerText}>{ text }</Text>
+            {loading ? (
+            <ActivityIndicator
+                animating={true}
+                size="small"
+                color="#714DF5" />
+            ) : (
+            <Text style={styles.AnswerText}>{text}</Text>
+            )}
         </View>
     </View>
   );

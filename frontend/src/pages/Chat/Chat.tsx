@@ -7,29 +7,40 @@ import AnswerBalloon from '../../components/Balloons/AnswerBalloon';
 import ChatInput from '../../components/Inputs/ChatInput';
 import Styles from '../../styles/Styles';
 import apiClient from '../../services/apiClient';
-
 interface QnA {
   Q?: string;
   A?: string;
+  loading?: boolean;
 }
 
 const Chat: React.FC = () => {
   const [question, setQuestion] = useState('');
-  const [sampleQnA, setSampleQnA] = useState([{}]);
+  const [sampleQnA, setSampleQnA] = useState<QnA[]>([]);
   const navigation = useNavigation();
 
   const handleQuestion = async () => {
-    console.log(question);
-    const response = await apiClient.post('/api/chat/', {
-      vdf: 'v2',
-      question : question,
-    });
-    console.log(response.data);
-    const { answer } = response.data;
-      setSampleQnA(prevQnA => [...prevQnA, {Q: question}]);
-      setSampleQnA(prevQnA => [...prevQnA, {A: answer}]);
-      setQuestion('');
-    };
+    setSampleQnA(prevQnA => [...prevQnA, { Q: question }, { loading: true }]);
+    setQuestion('');
+    try {
+      const response = await apiClient.post('/api/chat/', {
+        vdf: 'v2',
+        question: question,
+      });
+      const { answer } = response.data;
+      setSampleQnA(prevQnA => {
+        const updatedQnA = [...prevQnA];
+        updatedQnA[updatedQnA.length - 1] = { A: answer, loading: false };
+        return updatedQnA;
+      });
+    } catch (error) {
+      console.error('API 요청 실패:', error);
+      setSampleQnA(prevQnA => {
+        const updatedQnA = [...prevQnA];
+        updatedQnA[updatedQnA.length - 1] = { A: '답변을 가져오지 못했습니다.', loading: false };
+        return updatedQnA;
+      });
+    }
+  };
 
   const handleGoBack = () => {
     if (navigation.canGoBack()) {
@@ -49,8 +60,8 @@ const Chat: React.FC = () => {
             if(item.Q) {
               return <QuestionBalloon key={index} text={item.Q}/>;
             }
-            else if(item.A) {
-              return <AnswerBalloon key={index} text={item.A}/>;
+            else if (item.A || item.loading) {
+              return <AnswerBalloon key={index} text={item.A || ''} loading={item.loading || false} />;
             }
           })}
         </View>
