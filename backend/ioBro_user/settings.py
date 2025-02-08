@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     "user.apps.UserConfig",
     "vdf.apps.VdfConfig",
     "chat.apps.ChatConfig",
+
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'ioBro_user.urls'
@@ -152,3 +155,4 @@ SIMPLE_JWT = {
 
 ALLOWED_HOSTS = secret["ALLOWED_HOSTS"]
 
+CORS_ALLOW_ALL_ORIGINS = True

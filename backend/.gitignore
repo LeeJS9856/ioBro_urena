@@ -9,5 +9,6 @@
 .prettierrc
 
 venv/
+.venv/
 .env
 urena-key.ppk
