@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { TextGmarketSans } from '../../utils/CustomText';
 import { ActivityIndicator } from 'react-native-paper';
+import Markdown from 'react-native-markdown-display';
 
 interface AnswerBalloonProps {
   text: string;
@@ -21,12 +22,22 @@ const AnswerBalloon: React.FC<AnswerBalloonProps> = ({ text, loading }) => {
                 size="small"
                 color="#714DF5" />
             ) : (
-            <Text style={styles.AnswerText}>{text}</Text>
+            <Markdown style={markdownStyles}>{text}</Markdown>
             )}
         </View>
     </View>
   );
 };
+
+const markdownStyles = StyleSheet.create({
+    body: {
+        fontSize: 14,
+        color: '#000000',
+        fontFamily: 'NotoSansKR-Medium',
+        fontWeight: '700',
+        paddingHorizontal: 13,
+    },
+});
 
 const styles = StyleSheet.create({
     AnswerContainer: {
@@ -36,14 +47,6 @@ const styles = StyleSheet.create({
     },
     AnswerBallon: {
         flex: 1,
-    },
-    AnswerText: {
-        width: 'auto',
-        fontFamily: 'NotoSansKR-Medium',
-        fontWeight: '700',
-        fontSize: 14,
-        color: '#000000',
-        padding: 13,
     },
     Icon: {
         width: 30,

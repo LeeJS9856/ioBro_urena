@@ -53,7 +53,7 @@ class VDFAdvisor:
         messages = [
             ("system", f"""
             당신은 VDF(Vision, Direction, Force) 기반의 학습 컨설턴트입니다.
-            학습자의 VDF 유형은 {vdf_type}입니다.
+            학습자의 VDF 유형은 {vdf_type}입니다. 마크다운 문법으로 답변해주세요.
             
             🔹 참고할 VDF 지식:
             {self.get_vdf_knowledge(vdf_type)}
