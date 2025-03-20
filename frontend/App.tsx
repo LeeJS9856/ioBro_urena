@@ -11,16 +11,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignIn from './src/pages/SignIn/SignIn';
 import Main from './src/pages/Main/Main';
 import Chat from './src/pages/Chat/Chat';
+import VDFMain from './src/pages/VDF/VDFMain';
+import VDFTest from './src/pages/VDF/VDFTest';
 
 const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Chat">
+      <Stack.Navigator initialRouteName="Main">
         <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }} />
         <Stack.Screen name="Main" component={Main} options={{ headerShown: false }}/>
         <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }}/>
+        <Stack.Screen name="VDFMain" component={VDFMain} options={{ headerShown: false }}/>
+        <Stack.Screen name="VDFTest" component={VDFTest} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
