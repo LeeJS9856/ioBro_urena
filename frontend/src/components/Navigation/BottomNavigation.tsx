@@ -16,6 +16,9 @@ const BottomNavigation: React.FC = () => {
           case 'Main':
             setActiveIndex(0);
             break;
+          case 'VDFMain':
+            setActiveIndex(1);
+            break;
           case 'Chat':
             setActiveIndex(2);
             break;
@@ -32,6 +35,9 @@ const BottomNavigation: React.FC = () => {
     switch (index) {
       case 0:
         navigation.navigate('Main' as never);
+        break;
+      case 1:
+        navigation.navigate('VDFMain' as never);
         break;
       case 2:
         navigation.navigate('Chat' as never);
