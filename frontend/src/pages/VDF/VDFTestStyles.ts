@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { TextNotoSans } from '../../utils/CustomText';
 
 const VDFTestStyles = StyleSheet.create({
     titleContainer: {
@@ -16,6 +17,18 @@ const VDFTestStyles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         margin: 30,
+    },
+    progressBarContainer : {
+        marginBottom: 25,
+        gap: 16,
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
+    },
+    ProgressText: {
+        fontWeight: 700,
+        fontSize: 14,
     },
 });
 
