@@ -6,7 +6,6 @@ import { questions } from '../../utils/VDFQuestion';
 import VDFTestPage from './VDFTestPage';
 import { useNavigation } from '@react-navigation/native';
 import ProgressBar from 'react-native-progress-step-bar';
-import { TextNotoSans } from '../../utils/CustomText';
 
 const QUESTIONS_PER_PAGE = 10;
 
